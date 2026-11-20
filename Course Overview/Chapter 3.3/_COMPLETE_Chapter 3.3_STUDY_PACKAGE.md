@@ -1,0 +1,1561 @@
+# Chapter 3.3 - Complete Study Material
+
+
+## 🖥️ PRESENTATION SLIDES
+
+
+# Chapter 3.3 - All Lecture Slides Text
+
+
+## Chapter 9 DMA
+### Slide 1
+- Logical Thinking & Problem Solving
+- Course Objectives
+- 1
+- The course aims to provide a strong foundation in problem-solving using the C programming language.
+- It enhances students' programming skills by developing logical thinking and algorithmic problem-solving abilities
+- By mastering C programming concepts, students will be able to design and implement efficient solutions for real-world problems
+
+### Slide 2
+- 2
+- Course Outcomes
+- CO No
+- Statement
+- CO1
+- To remember the concepts related to fundamentals of C language, Algorithm/ pseudocode, Flowcharts and Problem solving
+- CO2
+- To understand the way of execution and debug programs in C language.
+- CO3
+- To apply various constructs, loops, functions to solve mathematical and scientific problem.
+- CO4
+- To analyse the dynamic behaviour of memory by the use of pointers.
+- CO5
+- To design and develop modular programs for real world problems using control structure and selection structure.
+
+### Slide 3
+- Recap of Previous Lecture
+- • Structures and unions are user-defined data types in C.
+- • Structures allocate separate memory for each member.
+- • Unions share the same memory location among all members.
+- • Structure members can store values simultaneously.
+- • In a union, only one member can hold a valid value at a time.
+- • Both are used to organize and manage related data efficiently.
+
+### Slide 4
+- Space for visual (size 24)
+- DMA Functions
+- 4
+- Syllabus/Topics To be Covered
+
+### Slide 5
+- 5
+- Dynamic Memory Allocation
+- is manual allocation and freeing of memory according to your programming needs.
+- Dynamic memory
+- is managed and served with pointers that point to the newly allocated memory space in an area which we call the heap.
+- Now you can create and destroy an array of elements dynamically at runtime without any problems.
+- To sum up, the automatic memory management uses the stack, and the dynamic memory allocation uses the heap.
+- Introduction to Dynamic Memory allocation
+
+### Slide 6
+- 6
+- Difference between Stack and Heap
+- Parameter
+- Stack
+- Heap
+- Type of data structures
+- A stack is a linear data structure.
+- Heap is a hierarchical data structure.
+- Access speed
+- High-speed access
+- Slower compared to stack
+- Space management
+- Space managed efficiently by OS so memory will never become fragmented.
+- Heap Space not used as efficiently. Memory can become fragmented as blocks of memory first allocated and then freed.
+- Access
+- Local variables only
+- It allows you to access variables globally.
+- Limit of space size
+- Limit on stack size dependent on OS.
+- Does not have a specific limit on memory size.
+- Resize
+- Variables cannot be resized
+- Variables can be resized.
+- Memory Allocation
+- Memory is allocated in a contiguous block.
+- Memory is allocated in any random order.
+
+### Slide 7
+- Allocation and Deallocation
+- Automatically done by compiler instructions.
+- It is manually done by the programmer.
+- Deallocation
+- Does not require to de-allocate variables.
+- Explicit de-allocation is needed.
+- Cost
+- Less
+- More
+- Implementation
+- A stack can be implemented in 3 ways simple array based, using dynamic memory, and Linked list based.
+- Heap can be implemented using array and trees.
+- Main Issue
+- Shortage of memory
+- Memory fragmentation
+- Locality of reference
+- Automatic compile time instructions.
+- Adequate
+- Flexibility
+- Fixed size
+- Resizing is possible
+- Access time
+- Faster
+- Slower
+- 7
+
+### Slide 8
+- Static Memory Allocation and Dynamic Memory Allocation
+- Static Memory Allocation
+- Dynamic Memory Allocation
+- Memory is allocated at compile time.
+- Memory is allocated at run time.
+- Memory can't be increased while executing program.
+- Memory can be increased while executing program.
+- Used in array.
+- Used in linked list.
+- 8
+
+### Slide 9
+- Standard DMA Functions
+- Function
+- Purpose
+- malloc
+- Allocates the memory of requested size and returns the pointer to the first byte of allocated space.
+- calloc
+- Allocates the space for elements of an array. Initializes the elements to zero and returns a pointer to the memory.
+- realloc
+- It is used to modify the size of previously allocated memory space.
+- Free
+- Frees or empties the previously allocated memory space.
+- 9
+
+### Slide 10
+- The malloc Function
+- The malloc() function stands for memory allocation.
+- It is a function which is used to allocate a block of memory dynamically.
+- It reserves memory space of specified size and returns the null pointer pointing to the memory location.
+- The pointer returned is usually of type void. It means that we can assign malloc function to any pointer.
+- 10
+
+### Slide 11
+- Syntax:
+- ptr
+- = (
+- cast_type
+- *) malloc (
+- byte_size
+- );
+- Here,
+- ptr
+- is a pointer of
+- cast_type
+- .
+- The malloc function returns a pointer to the allocated memory of
+- byte_size
+- .
+- Example:
+- ptr
+- = (int *) malloc (50)
+- When this statement is successfully executed, a memory space of 50 bytes is reserved. The address of the first byte of reserved space is assigned to the pointer
+- ptr
+- of type int.
+- 11
+
+### Slide 12
+- Consider another example:
+- #include <
+- stdlib.h
+- >
+- int main(){
+- int *
+- ptr
+- ;
+- ptr
+- = malloc(15 *
+- sizeof
+- (*
+- ptr
+- )); /* a block of 15 integers */
+- if (
+- ptr
+- != NULL) {
+- *(
+- ptr
+- + 5) = 480; /* assign 480 to sixth integer */
+- printf
+- ("Value of the 6th integer is %d",*(
+- ptr
+- + 5));
+- }
+- }
+- Output:
+- Value of the 6th integer is 480
+- 12
+
+### Slide 13
+- 13
+- Notice that
+- sizeof
+- (*
+- ptr
+- )
+- was used instead of
+- sizeof
+- (int)
+- in order to make the code more robust when *
+- ptr
+- declaration is
+- typecasted
+- to a different data type later.
+- The allocation may fail if the memory is not sufficient. In this case, it returns a NULL pointer. So, you should include code to check for a NULL pointer.
+- Keep in mind that the allocated memory is contiguous and it can be treated as an array. We can use pointer arithmetic to access the array elements rather than using brackets [ ]. We advise to use + to refer to array elements because using incrementation ++ or += changes the address stored by the pointer.
+- Malloc function can also be used with the character data type as well as complex data types such as structures.
+
+### Slide 14
+- The
+- calloc
+- Function
+- The
+- calloc
+- function stands for contiguous allocation.
+- This function is used to allocate multiple blocks of memory.
+- It is a dynamic memory allocation function which is used to allocate the memory to complex data structures such as arrays and structures.
+- Malloc function is used to allocate a single block of memory space while the
+- calloc
+- function is used to allocate multiple blocks of memory space.
+- Each block allocated by the
+- calloc
+- function is of the same size.
+- 14
+
+### Slide 15
+- Syntax:
+- ptr
+- = (
+- cast_type
+- *)
+- calloc
+- (n, size);
+- The above statement is used to allocate n memory blocks of the same size.
+- After the memory space is allocated, then all the bytes are initialized to zero.
+- The pointer which is currently at the first byte of the allocated memory space is returned.
+- 15
+
+### Slide 16
+- Whenever there is an error allocating memory space such as the shortage of memory, then a null pointer is returned.
+- The program below calculates the sum of an arithmetic sequence.
+- #include <
+- stdio.h
+- >
+- int main() {
+- int
+- i
+- , *
+- ptr
+- , sum = 0;
+- ptr
+- =
+- calloc
+- (10,
+- sizeof
+- (int));
+- if (
+- ptr
+- == NULL) {
+- printf
+- ("Error! memory not allocated.");
+- exit(0);
+- }
+- 16
+
+### Slide 17
+- printf
+- ("Building and calculating the sequence sum of the first 10 terms \ n ");
+- for (
+- i
+- = 0;
+- i
+- < 10; ++
+- i
+- ) { * (
+- ptr
+- +
+- i
+- ) =
+- i
+- ;
+- sum += * (
+- ptr
+- +
+- i
+- );
+- }
+- printf
+- ("Sum = %d", sum);
+- free(
+- ptr
+- );
+- return 0;
+- }
+- Result:
+- Building and calculating the sequence sum of the first 10 terms
+- Sum = 45
+- 17
+
+### Slide 18
+- Difference between
+- Calloc
+- and Malloc
+- The
+- calloc
+- function is generally more suitable and efficient than that of the malloc function.
+- While both the functions are used to allocate memory space,
+- calloc
+- can allocate multiple blocks at a single time.
+- You don't have to request for a memory block every time.
+- The
+- calloc
+- function is used in complex data structures which require larger memory space.
+- The memory block allocated by a
+- calloc
+- function is always initialized to zero while in malloc it always contains a garbage value.
+- 18
+
+### Slide 19
+- The
+- realloc
+- Function
+- Using the
+- realloc
+- () function, you can add more memory size to already allocated memory.
+- It expands the current block while leaving the original content as it is.
+- realloc
+- stands for reallocation of memory.
+- realloc
+- can also be used to reduce the size of the previously allocated memory.
+- 19
+
+### Slide 20
+- Syntax:
+- ptr
+- =
+- realloc
+- (
+- ptr,newsize
+- );
+- The above statement allocates a new memory space with a specified size in the variable
+- newsize
+- .
+- After executing the function, the pointer will be returned to the first byte of the memory block.
+- The new size can be larger or smaller than the previous memory.
+- We cannot be sure that if the newly allocated block will point to the same location as that of the previous memory block.
+- This function will copy all the previous data in the new region.
+- It makes sure that data will remain safe.
+- 20
+
+### Slide 21
+- For example:
+- #include <
+- stdio.h
+- >
+- int main () {
+- char *
+- ptr
+- ;
+- ptr
+- = (char *) malloc(10);
+- strcpy
+- (
+- ptr
+- , "Programming");
+- printf
+- (" %s,  Address = %u\n",
+- ptr
+- ,
+- ptr
+- );
+- ptr
+- = (char *)
+- realloc
+- (
+- ptr
+- , 20); //
+- ptr
+- is reallocated with new size
+- strcat
+- (
+- ptr
+- , " In 'C'");
+- printf
+- (" %s,  Address = %u\n",
+- ptr
+- ,
+- ptr
+- );
+- free(
+- ptr
+- );
+- return 0;
+- }
+- Whenever the
+- realloc
+- results in an unsuccessful operation, it returns a null pointer, and the previous data is also freed.
+- 21
+
+### Slide 22
+- The free Function
+- The memory for variables is automatically deallocated at compile time.
+- In dynamic memory allocation, you have to deallocate memory explicitly.
+- If not done, you may encounter out of memory error.
+- The free() function is called to release/deallocate memory.
+- By freeing memory in your program, you make more available for use later
+- .
+- 22
+
+### Slide 23
+- For example:
+- #include <
+- stdio.h
+- >
+- int main() {
+- int*
+- ptr
+- = malloc(10 *
+- sizeof
+- (*
+- ptr
+- ));
+- if (
+- ptr
+- != NULL){
+- *(
+- ptr
+- + 2) = 50;
+- printf
+- ("Value of the 2nd integer is %d",*(
+- ptr
+- + 2));
+- }
+- free(
+- ptr
+- );
+- }
+- Output
+- Value of the 2nd integer is 50
+- 23
+
+### Slide 24
+- Dynamically allocating memory to 1-D array
+- In the below example, we are creating a pointer to an integer and assign it heap memory.
+- When memory is successfully assigned to the pointer then we can use this pointer as a 1D array and using the square braces “[]” we can access the pointer as like the statically allocated array.
+- Let us see the below Image for better understanding:
+- 24
+- Source:
+- https
+- ://aticleworld.com/dynamically-allocate-2d-array-c/
+
+### Slide 25
+- #include <
+- stdio.h
+- >
+- #include <
+- stdlib.h
+- >
+- #define FAIL 1
+- #define TRUE 0
+- int main()
+- {
+- int *p;//= NULL; //pointer to integer
+- int n= 7; //
+- can be dynamic input as well.
+- int
+- i
+- = 0; //Variable for looping
+- p = (int *)malloc(n *
+- sizeof
+- (int));
+- //Check memory validity
+- if(p == NULL)
+- {
+- return FAIL;
+- }
+- 25
+- for (
+- i
+- =0;
+- i
+- < n;
+- i
+- ++)
+- {
+- p[
+- i
+- ] =
+- i
+- ;
+- }
+- //Print the copy data
+- for (
+- i
+- =0;
+- i
+- < n;
+- i
+- ++)
+- {
+- printf
+- ("\np[%d] = %d\n",
+- i,p
+- [
+- i
+- ]);
+- }
+- // free allocated memory
+- free(p);
+- return TRUE;
+- }
+
+### Slide 26
+- Output:
+- 26
+
+### Slide 27
+- Dynamically allocating memory to 2-D array
+- Following are different ways to create a 2D array on heap (or dynamically allocate a 2D array).
+- In the following examples, we have considered ‘r‘ as number of rows, ‘c‘ as number of columns and we created a 2D array with r = 3, c = 4 and following values
+- 1  2  3  4
+- 5  6  7  8
+- 9  10 11 12
+- 1) Using a single pointer:
+- A simple way is to allocate memory block of size r*c and access elements using simple pointer arithmetic.
+- 27
+
+### Slide 28
+- for (
+- i
+- = 0;
+- i
+- <  r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- *(
+- arr
+- +
+- i
+- *c + j) = ++count;
+- for (
+- i
+- = 0;
+- i
+- <  r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- printf
+- ("%d ", *(
+- arr
+- +
+- i
+- *c + j));
+- /* Code for further processing and free the
+- dynamically allocated memory */
+- free(
+- arr
+- );
+- return 0;
+- }
+- 28
+- Output:
+- 1 2 3 4 5 6 7 8 9 10 11 12
+- #include <
+- stdio.h
+- >
+- #include <
+- stdlib.h
+- >
+- int main()
+- {
+- int r = 3, c = 4;
+- int *
+- arr
+- = (int *)malloc(r * c *
+- sizeof
+- (int));
+- int
+- i
+- , j, count = 0;
+
+### Slide 29
+- 2) Using an array of pointers
+- We can create an array of pointers of size r. Note that from C99, C language allows variable sized arrays. After creating an array of
+- pointers,we
+- can dynamically allocate memory for every row.
+- 29
+- Output:
+- 1 2 3 4 5 6 7 8 9 10 11 12
+- #include <
+- stdio.h
+- >
+- #include <
+- stdlib.h
+- >
+- int main()
+- {
+- int r = 3, c = 4,
+- i
+- , j, count;
+- int *
+- arr
+- [r];
+- for (
+- i
+- =0;
+- i
+- <r;
+- i
+- ++)
+- arr
+- [
+- i
+- ] = (int *)malloc(c *
+- sizeof
+- (int));
+- // Note that
+- arr
+- [
+- i
+- ][j] is same as *(*(
+- arr+i
+- )+j)
+- count = 0;
+- for (
+- i
+- = 0;
+- i
+- <  r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- *(*(
+- arr+i
+- )+j) = ++count ;  //OR
+- arr
+- [
+- i
+- ][j] = ++count;
+- for (
+- i
+- = 0;
+- i
+- <  r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- printf
+- ("%d ", *(*(
+- arr+i
+- )+j) );
+- /* Code for further processing and free the
+- dynamically allocated memory */
+- return 0;
+- }
+
+### Slide 30
+- 3) Using pointer to a pointer
+- We can create an array of pointers also dynamically using a double pointer. Once we have an array pointers allocated dynamically, we can dynamically allocate memory and for every row like method 2.
+- 30
+- Output:
+- 1 2 3 4 5 6 7 8 9 10 11 12
+- #include <
+- stdio.h
+- >
+- #include <
+- stdlib.h
+- >
+- int main()
+- {
+- int r = 3, c = 4,
+- i
+- , j, count;
+- int **
+- arr
+- = (int **)malloc(r *
+- sizeof
+- (int *));
+- for (
+- i
+- =0;
+- i
+- <r;
+- i
+- ++)
+- arr
+- [
+- i
+- ] = (int *)malloc(c *
+- sizeof
+- (int));
+- // Note that
+- arr
+- [
+- i
+- ][j] is same as *(*(
+- arr+i
+- )+j)
+- count = 0;
+- for (
+- i
+- = 0;
+- i
+- <  r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- arr
+- [
+- i
+- ][j] = ++count;  // OR *(*(
+- arr+i
+- )+j) = ++count
+- for (
+- i
+- = 0;
+- i
+- <  r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- printf
+- ("%d ",
+- arr
+- [
+- i
+- ][j]);
+- /* Code for further processing and free the
+- dynamically allocated memory */
+- return 0;
+- }
+
+### Slide 31
+- 4) Using double pointer and one malloc call
+- #include<stdio.h>
+- #include<stdlib.h>
+- int main()
+- {
+- int r=3, c=4,
+- len
+- =0;
+- int *
+- ptr
+- , **
+- arr
+- ;
+- int count = 0,i,j;
+- len
+- =
+- sizeof
+- (int *) * r +
+- sizeof
+- (int) * c * r;
+- arr
+- = (int **)malloc(
+- len
+- );
+- //
+- ptr
+- is now pointing to the first element in of 2D array
+- ptr
+- = (int *)(
+- arr
+- + r);
+- // for loop to point rows pointer to appropriate location in 2D array
+- for(
+- i
+- = 0;
+- i
+- < r;
+- i
+- ++)
+- arr
+- [
+- i
+- ] = (
+- ptr
+- + c *
+- i
+- );
+- for (
+- i
+- = 0;
+- i
+- < r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- arr
+- [
+- i
+- ][j] = ++count; // OR *(*(
+- arr+i
+- )+j) = ++count
+- for (
+- i
+- = 0;
+- i
+- < r;
+- i
+- ++)
+- for (j = 0; j < c;
+- j++
+- )
+- printf
+- ("%d ",
+- arr
+- [
+- i
+- ][j]);
+- return 0;
+- }
+- 31
+- Output:
+- 1 2 3 4 5 6 7 8 9 10 11 12
+
+### Slide 32
+- Dynamically allocating memory to structure
+- Let's assume we want to dynamically allocate a person structure. The person is defined like this:
+- typedef struct {
+- char * name;
+- int age;
+- } person;
+- To allocate a new person in the
+- myperson
+- argument, we use the following syntax:
+- person *
+- myperson
+- = (person *) malloc(
+- sizeof
+- (person));
+- This tells the compiler that we want to dynamically allocate just enough to hold a person struct in memory, and then return a pointer to the newly allocated data.
+- Note that
+- sizeof
+- is not an actual function, because the compiler interprets it and translates it to the actual memory size of the person struct.
+- 32
+
+### Slide 33
+- To access the person's members, we can use the -> notation:
+- myperson
+- ->name = "John";
+- myperson
+- ->age = 27;
+- After we are done using the dynamically allocated struct, we can release it using free:
+- free(
+- myperson
+- );
+- Note that the free does not delete the
+- myperson
+- variable itself, it simply releases the data that it points to.
+- The
+- myperson
+- variable will still point to somewhere in the memory - but after calling
+- myperson
+- we are not allowed to access that area anymore.
+- We must not use that pointer again until we allocate new data using it.
+- 33
+
+### Slide 34
+- Example:
+- #include <
+- stdio.h
+- >
+- #include <
+- stdlib.h
+- >
+- struct course {
+- int marks;
+- char subject[30];
+- };
+- int main() {
+- struct course *
+- ptr
+- ;
+- int
+- i
+- ,
+- noOfRecords
+- ;
+- printf
+- ("Enter the number of records: ");
+- scanf
+- ("%d", &
+- noOfRecords
+- );
+- // Memory allocation for
+- noOfRecords
+- structures
+- ptr
+- = (struct course *)malloc(
+- noOfRecords
+- *
+- sizeof
+- (struct course));
+- for (
+- i
+- = 0;
+- i
+- <
+- noOfRecords
+- ; ++
+- i
+- ) {
+- printf
+- ("Enter the name of the subject and marks respectively:\n");
+- scanf
+- ("%s %d", (
+- ptr
+- +
+- i
+- )->subject, &(
+- ptr
+- +
+- i
+- )->marks);
+- }
+- printf
+- ("Displaying Information:\n");
+- for (
+- i
+- = 0;
+- i
+- <
+- noOfRecords
+- ; ++
+- i
+- )
+- printf
+- ("%s\
+- t%d
+- \n", (
+- ptr
+- +
+- i
+- )->subject, (
+- ptr
+- +
+- i
+- )->marks);
+- return 0;
+- }
+- 34
+- Output
+- :
+- Enter the number of records: 2
+- Enter the name of the subject and marks respectively:
+- Programming
+- 22
+- Enter the name of the subject and marks respectively:
+- Structure
+- 33
+- Displaying Information:
+- Programming      22
+- Structure        33
+
+### Slide 35
+- Advantages
+- When we do not know how much amount of memory would be needed for the program beforehand.
+- When we want data structures without any upper limit of memory space.
+- When you want to use your memory space more efficiently.
+- Example: If you have allocated memory space for a 1D array as array[20] and you end up using only 10 memory spaces then the remaining 10 memory spaces would be wasted and this wasted memory cannot even be utilized by other program variables.
+- Dynamically created lists insertions and deletions can be done very easily just by the manipulation of addresses whereas in case of statically allocated memory insertions and deletions lead to more movements and wastage of memory.
+- When you want you to use the concept of structures and linked list in programming, dynamic memory allocation is a must.
+- 35
+
+### Slide 36
+- Disadvantages
+- As the memory is allocated during runtime, it requires more time.
+- Memory needs to be freed by the user when done. This is important as it is more likely to turn into bugs that are difficult to find.
+- 36
+
+### Slide 37
+- 37
+- Summary
+
+### Slide 38
+- Frequently Asked question
+- Q1
+- What is the difference between malloc and
+- calloc
+- ?
+- Ans.
+- A malloc and
+- calloc
+- are memory management functions. They are used to allocate memory dynamically. Basically, there is no actual difference between
+- calloc
+- and malloc except that the memory that is allocated by
+- calloc
+- is initialized with 0. In C
+- language,calloc
+- function initialize the all allocated space bits with zero but malloc does not initialize the allocated memory. These both function also has a difference regarding their number of arguments, malloc takes one argument but
+- calloc
+- takes two.
+- Q
+- 2
+- What is the purpose of
+- realloc
+- ( )?
+- Ans.
+- The
+- realloc
+- function is used to resize the allocated block of the memory. It takes two arguments first one is a pointer to previously allocated memory and the second one is the newly requested size. The
+- calloc
+- function first deallocates the old object and allocates again with the newly specified size. If the new size is lesser to the old size, the contents of the newly allocated memory will be the same as prior but if any bytes in the newly created object goes beyond the old size, the values of the object will be indeterminate.
+- Q3
+- What is the return value of malloc (0)?
+- Ans. If the size of the requested space is zero, the behavior will be implementation-defined. The return value of the malloc could be a null pointer or it shows the behavior like that size is some nonzero value. So you must never use the malloc(0) in your C program.
+- 38
+
+### Slide 39
+- Q4 What are the return type of malloc() and
+- calloc
+- (), how can we use?
+- Ans. Malloc() and
+- calloc
+- () both functions return void* (a void pointer), to use/capture the returned value in pointer variable we convert it's type.
+- Suppose we create memory for 10 integers then we have to convert it into int*.
+- int *
+- ptr
+- ;
+- ptr
+- =(int*)malloc(N*
+- sizeof
+- (int));
+- Here, malloc() will return void* and
+- ptr
+- variable is int* type, so we are converting it into (int*).
+- Q5 Explain free() unique features?
+- Ans. The free() function defined in <
+- stdlib.h
+- > header file deallocates the memory which was previously allocated using malloc(),
+- calloc
+- () or
+- realloc
+- .
+- If free(
+- ptr
+- ) has already been called before, undefined behavior occurs. If
+- ptr
+- is NULL, no operation is performed. It helps to reduce wastage of memory by freeing it.
+- 39
+
+### Slide 40
+- Assessment Questions
+- :
+- 40
+- 1.
+- Point out the error in the following program.
+- #include<stdio.h>
+- #include<stdlib.h>
+- int main()
+- {
+- int *a[3];
+- a = (int*) malloc(
+- sizeof
+- (int)*3);
+- free(a);
+- return 0;
+- }
+- A.	Error: unable to allocate memory
+- B.
+- Error: We cannot store address of allocated memory in a
+- C.	Error: unable to free memory
+- D.	No error
+
+### Slide 41
+- 41
+- 2.
+- malloc() allocates memory from the heap and not from the stack.
+- Yes
+- No
+- 3.
+- Point out the correct statement which correctly free the memory pointed to by 's' and 'p' in the following program?
+- #include<stdio.h>
+- #include<stdlib.h>
+- int main()
+- {
+- struct ex
+- {
+- int
+- i
+- ;
+- float j;
+- char *s
+- };
+- struct ex *p;
+- p = (struct ex *)malloc(
+- sizeof
+- (struct ex));
+- p->s = (char*)malloc(20);
+- return 0;
+- }
+- A.	free(p); , free(p->s);
+- B.
+- free(p->s); , free(p);
+- C.	free(p->s);
+- D.	free(p);
+
+### Slide 42
+- 4.
+- malloc() returns a NULL if it fails to allocate the requested memory.
+- a)
+- True
+- b)
+- False
+- 5.
+- Which of the following statement is correct prototype of the malloc() function in c ?
+- a)
+- int* malloc(int);
+- b)
+- char* malloc(char);
+- c)
+- unsigned int* malloc(unsigned int);
+- d)
+- void* malloc(
+- size_t
+- );
+- 42
+
+### Slide 43
+- Discussion forum
+- .
+- Watch this video to have more insights into
+- the topic DMA.
+- 43
+- https://www.youtube.com/watch?v=v49bwqQ4ouM
+
+### Slide 44
+- REFERENCES
+- Reference Books
+- Programming in C by Reema
+- Thareja
+- .
+- Programming in ANSI C by E.
+- Balaguruswamy
+- , Tata McGraw Hill.
+- Programming with C (
+- Schaum's
+- Outline Series) by Byron Gottfried  Jitender Chhabra, Tata McGraw Hill.
+- The C Programming Language by Brian W. Kernighan, Dennis Ritchie, Pearson education.
+- Websites:
+- https://www.guru99.com/c-dynamic-memory-allocation.html
+- https://www.geeksforgeeks.org/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/
+- https://www.programiz.com/c-programming/c-dynamic-memory-allocation
+- https://www.programiz.com/c-programming/examples/structure-dynamic-memory-allocation
+- https://aticleworld.com/dynamically-allocate-2d-array-c/
+- https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+- 44
+
+### Slide 45
+- REFERENCES
+- YouTube Links:
+- https://www.youtube.com/watch?v=v49bwqQ4ouM&t=11s
+- https://www.youtube.com/watch?v=669YaQQMM_0&list=PLiOa6ike4WAEH5k7DB_lOLVrJ1Rq3fTNe
+- https://www.youtube.com/watch?v=udfbq4M2Kfc
+- https://www.youtube.com/watch?v=1oE5-NrI_Zo
+- 45
+
+### Slide 46
+- NPTEL/ Coursera Courses
+- 1. Problem Solving Through Programming in C
+- https://onlinecourses.nptel.ac.in/e-learning/preview/noc24_cs42
+- 2. Programming for Everybody (Getting Started with C)
+- – Beginner Friendly
+- https://www.coursera.org/learn/c-for-everyone
+- 3. Duke University – Introductory C Programming Specialization
+- https://www.coursera.org/specializations/c-programming
+
+### Slide 47
+- Class-wise
+- feedback
+- 47
+
+### Slide 48
+- THANK YOU
+
+
+## Topics Beyond Syllabus
+### Slide 1
+- INSTITUTE - UIE
+- Department of Engineering  Foundations
+- Bachelor
+- of Engineering (Computer Science & Engineering)
+- Subject Name: Logical Thinking & Problem Solving
+- Code:25CSH-107
+- Academic Session 2025-26
+- ODD Semester Jul-Dec 2025
+- Topic :
+- Classes
+- Vs Structure
+- Faculty Name-Dr. Sheenam
+- E_Code
+- - E6717
+- Designation-Assistant Professor
+
+### Slide 2
+- Logical Thinking & Problem Solving
+- Course Objectives
+- 2
+- The course aims to provide a strong foundation in problem-solving using the C programming language.
+- It enhances students' programming skills by developing logical thinking and algorithmic problem-solving abilities
+- By mastering C programming concepts, students will be able to design and implement efficient solutions for real-world problems
+
+### Slide 3
+- 3
+- Course Outcomes
+- CO No
+- Statement
+- CO1
+- To remember the concepts related to fundamentals of C language, Algorithm/ pseudocode, Flowcharts and Problem solving
+- CO2
+- To understand the way of execution and debug programs in C language.
+- CO3
+- To apply various constructs, loops, functions to solve mathematical and scientific problem.
+- CO4
+- To analyse the dynamic behaviour of memory by the use of pointers.
+- CO5
+- To design and develop modular programs for real world problems using control structure and selection structure.
+
+### Slide 4
+- Scheme of Evaluation
+- 4
+- S. No.
+- Direct Evaluation Instruments
+- Weightage of actual conduct
+- Assessment tool
+- Frequency of
+- Task
+- Final Weightage in Internal Assessment
+- 1
+- Unit-1 Practical Evaluation
+- 15 Marks
+- Code-Blocks & Dev C
+- 3
+- 45
+- 2
+- Unit-2 Practical Evaluation
+- 15 Marks
+- Hacker Rank
+- 3
+- Unit-3 Practical Evaluation / Mini Project
+- 15 Marks
+- Code Fix problems
+- 4
+- Lab MST
+- 15 Marks for one MST
+- Online GDB compiler
+- 1 per semester
+- 15
+- 5
+- External Exam
+- 40 Marks
+- Hacker Rank
+- 1 per semester
+- 40
+- 6
+- Attendance
+- NA
+- NA
+- NA
+- NA
+
+### Slide 5
+- Specifying a class,
+- creating objects,
+- accessing class members,
+- defining a member function inside and outside class,
+- Structure VS Classes
+- class:
+- a class describes the contents of the objects that belong to it: it describes an aggregate of data fields (called instance variables), and defines the operations (called methods).
+- object:
+- an object is an element (or instance) of a class;
+- 5
+- CONTENTS
+
+### Slide 6
+- OBJECT-ORIENTED TERMINOLOGY
+- We summarize below the main object-oriented programming terms.
+- Class:
+- a class describes the contents of the objects that belong to it: it describes an aggregate of data fields (called instance variables), and defines the operations (called methods).
+- Object:
+- an object is an element (or instance) of a class; objects have the behaviours of their class. The object is the actual component of programs, while the class specifies how instances are created and how they behave.
+- Method:
+- a method is an action which an object is able to perform.
+- sending a message
+- sending a message to an object means asking the object to execute or invoke one of its methods.
+- 6
+
+### Slide 7
+- SPECIFYING A CLASS
+- A class is defined in C++ using keyword class followed by the name of class. The body of class is defined inside the curly brackets and terminated by a semicolon at the end.
+- 7
+- Figure 2.1 Class DECLARATION[1]
+
+### Slide 8
+- DEFINITION OF CLASS (as discussed in previous chapter) ACTIVITY
+- CLASS
+- Kindly ask your students to recall the definition.
+- Ask your students to declare a class student and correct them if they are wrong.
+- 8
+
+### Slide 9
+- CLASS
+- CLASS
+- Some basics about class:->
+- It consists of a set of members (data members and member functions)
+- Members are accessed using dot operator (.) for objects and arrow operator (->) for pointers.
+- A class is a namespace containing its members.
+- Data members are private by default whereas member functions are public by default.
+- Usually the data within a class is private and the functions are public. This is a result of the way classes are used. The data is hidden so it will be safe from accidental manipulation, while the functions that operate on the data are public so they can be accessed from outside the class.
+- However, there is no rule that says data must be private and functions public.
+- 9
+
+### Slide 10
+- CLASS
+- CLASS
+- class item
+- {
+- int
+- item;
+- float cost;
+- public:
+- void
+- getdata
+- (
+- int
+- a, float b);
+- void
+- putdata
+- (void);
+- }; //class ends with semicolon
+- 10
+- // variable declaration private
+- by default
+- // function declaration
+
+### Slide 11
+- DECLARING OBJECT
+- Declaring Objects:
+- When a class is defined, only the specification for the object is defined; no memory or storage is allocated. To use the data and access functions defined in the class, you need to create objects.
+- Syntax:
+- ClassName
+- ObjectName
+- ;
+- Example:
+- CAR Amaze,
+- Honda_city
+- , CRV
+- 11
+- Figure 2.2 Class and Object [1]
+
+### Slide 12
+- ACCESSING DATA MEMBERS AND MEMBER FUNCTIONS
+- The data members and member functions of class can be accessed using the dot(‘.’) operator with the object. For example if the name of object is
+- obj
+- and you want to access the member function with the name
+- printName
+- () then you will have to write
+- obj.printName
+- () .
+- Accessing Data Members
+- The public data members are also accessed in the same way given however the private data members are not allowed to be accessed directly by the object. Accessing a data member depends solely on the access control of that data member.
+- This access control is given by Access modifiers in C++.
+- There are three access modifiers : public, private and protected.
+- 12
+
+### Slide 13
+- ACCESS SPECIFIERS
+- Access modifiers are used to implement an important feature of Object-Oriented Programming known as Data Hiding.
+- There are 3 types of access modifiers available in C++:
+- Public
+- Private
+- Protected
+- Note: If we do not specify any access modifiers for the members inside the class then by default the access modifier for the members will be Private.
+- 13
+
+### Slide 14
+- PROGRAM
+- 14
+- Figure 1.3 Encapsulation [2]
+
+### Slide 15
+- STRUCTURE V/S CLASS
+- 15
+- Figure Structure  vs Class [3]
+
+### Slide 16
+- Program using Structure
+- 16
+- Problem Statement
+- : Create a structure Student to store and display student details (Name, Roll Number, Marks).
+- #include <iostream>
+- using namespace std;
+- struct Student {
+- string name;
+- int roll;
+- float marks;
+- };
+- public:
+- void input() {
+- cout
+- << "Enter employee name: ";
+- getline
+- (
+- cin
+- , name);
+- cout
+- << "Enter employee ID: ";
+- cin
+- >> id;
+- cout
+- << "Enter salary: ";
+- cin
+- >> salary;
+- }
+- void display() {
+- cout
+- << "\n--- Employee Details ---\n";
+- cout
+- << "Name: " << name <<
+- endl
+- ;
+- cout
+- << "ID: " << id <<
+- endl
+- ;
+- cout
+- << "Salary: " << salary <<
+- endl
+- ;
+- }
+- };
+- int main() {
+- Employee emp;
+- emp.input
+- ();         // Input data
+- cin.ignore
+- ();        // To handle newline before
+- getline
+- emp.display
+- ();       // Display data
+- return 0;
+- }
+
+### Slide 17
+- Program using Classes
+- 17
+- Problem Statement: Create a class Employee with data members Name, ID, and Salary. Include member functions to input and display the data.
+- #include <iostream>
+- using namespace std;
+- class Employee {
+- private:
+- string name;
+- int id;
+- float salary;
+- int main() {
+- Student s;
+- cout
+- << "Enter student name: ";
+- getline
+- (
+- cin
+- , s.name);
+- cout
+- << "Enter roll number: ";
+- cin
+- >>
+- s.roll
+- ;
+- cout
+- << "Enter marks: ";
+- cin
+- >>
+- s.marks
+- ;
+- cout
+- << "\n--- Student Details ---\n";
+- cout
+- << "Name: " << s.name <<
+- endl
+- ;
+- cout
+- << "Roll No: " <<
+- s.roll
+- <<
+- endl
+- ;
+- cout
+- << "Marks: " <<
+- s.marks
+- <<
+- endl
+- ;
+- return 0;
+- }
+
+### Slide 18
+- Assessment Pattern
+- Section-A
+- (a) Define class and object
+- (b) What is the syntax of defining member function outside the class. Give example.
+- (c) What are friend function?
+- 18
+
+### Slide 19
+- APPLICATIONS
+- Client- server systems
+- Neural networking
+- Parallel Programming
+- Object oriented databases
+- AI Expert systems
+- 19
+
+### Slide 20
+- REFERENCES
+- Reference Website
+- [1]
+- https://www.geeksforgeeks.org/c-classes-and-objects/
+- [2]
+- https://www.geeksforgeeks.org/object-oriented-programming-in-cpp/
+- [3]
+- https://tekslate.com/static-dynamic-binding-virtual-function-c-language
+- 20
+
+### Slide 21
+- THANK YOU
+- For queries
+- Email: CST_2019@gmail.com
+
+
+---
